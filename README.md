@@ -58,6 +58,19 @@ npx supabase db push
 - Produtos ativos são públicos
 - Administradores têm acesso total
 
+### Funções Principais
+
+- `criar_pedido_completo()`: Cria pedido com validação de estoque
+- `calcular_total_pedido()`: Calcula total automaticamente
+- `atualizar_status_pedido()`: Atualiza status do pedido
+
+### Views
+
+- `vw_pedidos_completos`: Pedidos com dados do cliente
+- `vw_detalhes_pedido`: Detalhes dos itens
+- `vw_produtos_mais_vendidos`: Ranking de produtos
+- `vw_historico_cliente`: Histórico de compras
+
 ## 🤝 Contato
 
 - Email: isaacvitorinola@gmail.com
