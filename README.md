@@ -7,8 +7,8 @@ Backend completo para sistema de e-commerce desenvolvido com Supabase, incluindo
 - ✅ Tabelas para clientes, produtos e pedidos
 - ✅ Row-Level Security (RLS) completo
 - ✅ Funções no banco de dados para automação
-- ❌ Views para consultas otimizadas
-- ❌ Edge Functions para e-mail e exportação CSV
+- ✅ Views para consultas otimizadas
+- ✅ Edge Functions para e-mail e exportação CSV
 
 ## 📋 Pré-requisitos
 
@@ -43,6 +43,13 @@ npx supabase link --project-ref seu-project-ref
 npx supabase db push
 ```
 
+5. Faça deploy das Edge Functions:
+
+```bash
+npx supabase functions deploy enviar-email-confirmacao
+npx supabase functions deploy exportar-pedido-csv
+```
+
 ## 🗄️ Estrutura do Banco de Dados
 
 ### Tabelas Principais
@@ -70,6 +77,41 @@ npx supabase db push
 - `vw_detalhes_pedido`: Detalhes dos itens
 - `vw_produtos_mais_vendidos`: Ranking de produtos
 - `vw_historico_cliente`: Histórico de compras
+
+## 🧪 Exemplos de Uso
+
+### Criar um Pedido
+
+```javascript
+const { data, error } = await supabase.rpc("criar_pedido_completo", {
+  p_cliente_id: "uuid-do-cliente",
+  p_itens: [
+    { produto_id: "uuid-produto-1", quantidade: 2 },
+    { produto_id: "uuid-produto-2", quantidade: 1 },
+  ],
+});
+```
+
+### Exportar Pedido para CSV
+
+```javascript
+const { data } = await supabase.functions.invoke("exportar-pedido-csv", {
+  body: {
+    pedido_id: "uuid-do-pedido",
+    cliente_id: "uuid-do-cliente",
+  },
+});
+```
+
+## 🔐 Variáveis de Ambiente
+
+Crie um arquivo `.env.local` com:
+
+```env
+SUPABASE_URL=sua-url
+SUPABASE_ANON_KEY=sua-key
+RESEND_API_KEY=sua-key-resend
+```
 
 ## 🤝 Contato
 
