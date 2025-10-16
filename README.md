@@ -6,7 +6,7 @@ Backend completo para sistema de e-commerce desenvolvido com Supabase, incluindo
 
 - ✅ Tabelas para clientes, produtos e pedidos
 - ✅ Row-Level Security (RLS) completo
-- ❌ Funções no banco de dados para automação
+- ✅ Funções no banco de dados para automação
 - ❌ Views para consultas otimizadas
 - ❌ Edge Functions para e-mail e exportação CSV
 
